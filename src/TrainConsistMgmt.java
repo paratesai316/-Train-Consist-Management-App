@@ -1,31 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * UC1: Initialize Train and Display Consist Summary
+ * This class serves as the entry point for the Train Consist Management App.
+ * It demonstrates class structure, the main method, and dynamic collections.
+ */
 public class TrainConsistMgmt {
 
     public static void main(String[] args) {
-        System.out.println("=========================================================");
-        System.out.println(" UC20 - Exception Handling During Search ");
-        System.out.println("=========================================================\n");
+        // 1. Display Welcome Message
+        System.out.println("=== Train Consist Management App ===");
 
-        String[] bogieIds = {};
-        String searchId = "BG101";
+        // 2. Initialize the Train Consist
+        // We use the List interface with ArrayList for dynamic resizing
+        // The list is currently empty as no bogies have been attached yet
+        List<String> trainConsist = new ArrayList<>();
 
-        if (bogieIds.length == 0) {
-            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
-        }
+        // 3. Display Initial Consist Summary
+        System.out.println("Initializing train consist...");
 
-        boolean found = false;
-        for (String id : bogieIds) {
-            if (id.equals(searchId)) {
-                found = true;
-                break;
-            }
-        }
+        // Using .size() to show the current count of bogies in the ArrayList
+        System.out.println("Initial bogie count: " + trainConsist.size());
 
-        if (found) {
-            System.out.println("Bogie " + searchId + " found in train consist.");
-        } else {
-            System.out.println("Bogie " + searchId + " not found.");
-        }
-
-        System.out.println("\nUC20 execution completed...");
+        // 4. Foundation for future Use Cases
+        System.out.println("System ready for bogie assignment.");
+        System.out.println("------------------------------------");
     }
 }
