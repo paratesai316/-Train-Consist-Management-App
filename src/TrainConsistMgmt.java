@@ -1,7 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class TrainConsistMgmt {
-    public static void main(String[] args) {
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+public class TrainConsistMgmt {
+
+    public static void main(String[] args) {
+        System.out.println("=========================================================");
+        System.out.println(" UC11 - Validate Train ID and Cargo Code ");
+        System.out.println("=========================================================\n");
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter Train ID (Format: TRN-1234): ");
+        String trainId = scanner.nextLine();
+
+        System.out.print("Enter Cargo Code (Format: PET-AB): ");
+        String cargoCode = scanner.nextLine();
+
+        Pattern trainPattern = Pattern.compile("^TRN-\\d{4}$");
+        Matcher trainMatcher = trainPattern.matcher(trainId);
+        boolean isTrainValid = trainMatcher.matches();
+
+        Pattern cargoPattern = Pattern.compile("^PET-[A-Z]{2}$");
+        Matcher cargoMatcher = cargoPattern.matcher(cargoCode);
+        boolean isCargoValid = cargoMatcher.matches();
+
+        System.out.println("\nValidation Results:");
+        System.out.println("Train ID Valid: " + isTrainValid);
+        System.out.println("Cargo Code Valid: " + isCargoValid);
+
+        System.out.println("\nUC11 validation completed...");
+
+        scanner.close();
     }
 }
